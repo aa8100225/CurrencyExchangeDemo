@@ -3,6 +3,13 @@ spring:
     import: classpath:currencies.yml
   application:
     name: CurrencyExchangeDemo
+  web:
+    resources:
+      add-mappings: false
   
 server:
   port: 8080
+
+#logging:
+#  level:
+#    root: DEBUG
