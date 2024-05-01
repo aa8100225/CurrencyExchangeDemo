@@ -1,7 +1,5 @@
 package main;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +18,9 @@ public class CurrencyExchangeController {
 	}
 
 	@GetMapping("/convert")
-	public String convertCurrency(@RequestParam("amount") BigDecimal amount, @RequestParam("source") String source,
-			@RequestParam("target") String target) {
+	public String convertCurrency(@RequestParam(value = "amount", required = false) String amount,
+			@RequestParam(value = "source", required = false) String source,
+			@RequestParam(value = "target", required = false) String target) {
 		return currencyExchangeService.convert(source, target, amount);
 	}
 }

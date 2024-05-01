@@ -1,7 +1,5 @@
 package main;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +13,7 @@ public class CurrencyExchangeService {
 		this.currencyConversionRateConfig = currencyConversionRateConfig;
 	}
 
-	public String convert(String source, String target, BigDecimal amount) {
+	public String convert(String source, String target, String amount) {
 
 		return "0.00";
 	}
