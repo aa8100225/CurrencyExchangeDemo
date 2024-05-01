@@ -3,6 +3,7 @@ package main;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ParseException;
@@ -25,6 +26,19 @@ public class CurrencyExchangeService {
 		} catch (Exception e) {
 			throw new Exception("Amount has invalid format.");
 		}
+		if (currencyConversionRateConfig.getRates() == null) {
+			throw new Exception("Currency exchange rates not configured");
+		}
+		Map<String, BigDecimal> conversionRates = currencyConversionRateConfig.getRates().get(source);
+
+		if (conversionRates == null) {
+			throw new Exception("Conversion source currency not found, no exchange rates available.");
+		}
+		BigDecimal rate = conversionRates.get(target);
+		if (rate == null) {
+			throw new Exception("Target currency for conversion does not exist.");
+		}
+		BigDecimal result = decimalAmount.multiply(rate);
 
 		return "0.00";
 	}
