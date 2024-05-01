@@ -1,6 +1,7 @@
 package main;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class CurrencyExchangeService {
 		} catch (ParseException e) {
 			throw e;
 		}
-		return decimal;
+		return decimal.setScale(2, RoundingMode.HALF_UP);
 	}
 
 }
