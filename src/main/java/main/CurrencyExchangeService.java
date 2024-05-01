@@ -39,8 +39,10 @@ public class CurrencyExchangeService {
 			throw new Exception("Target currency for conversion does not exist.");
 		}
 		BigDecimal result = decimalAmount.multiply(rate);
+		// DecimalFormat formatter = new DecimalFormat("#,##0.00"); // Zero padding
+		DecimalFormat formatter = new DecimalFormat("#,##0.##"); // No zero padding
 
-		return "0.00";
+		return formatter.format(result.setScale(2, RoundingMode.HALF_UP));
 	}
 
 	public BigDecimal parseStringToDecimal(String amount) throws Exception {
