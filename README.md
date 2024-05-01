@@ -34,5 +34,10 @@ This is a demo project for a Currency Exchange Service using Spring Boot. It dem
    ```
 
 ## API Usage
-- GET /convert?source=USD&target=JPY&amount=1,525 
+- `GET /convert?source=USD&target=JPY&amount=1,525`
+
+## Important Notes for API Usage
+- When passing parameters in URLs, ensure special characters are properly URL-encoded. For example:
+- Incorrect (not allowed): `GET /convert?source=USD&target=JPY&amount=+1525`
+- Correct (URL-encoded): `GET /convert?source=USD&target=JPY&amount=%2B1525`
 
