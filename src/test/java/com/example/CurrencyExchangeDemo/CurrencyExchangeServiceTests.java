@@ -22,6 +22,8 @@ public class CurrencyExchangeServiceTests {
 
     @Test
     public void testParseStringToDecimal_ValidFormats() throws Exception {
+    	assertEquals(new BigDecimal("-1529").setScale(2), currencyExchangeService.parseStringToDecimal("-1,529"));
+    	assertEquals(new BigDecimal("1529").setScale(2), currencyExchangeService.parseStringToDecimal("+1,529"));
         assertEquals(new BigDecimal("1234.56").setScale(2), currencyExchangeService.parseStringToDecimal("1,234.56"));
         assertEquals(new BigDecimal("1234").setScale(2), currencyExchangeService.parseStringToDecimal("1,234"));
         assertEquals(new BigDecimal("1000").setScale(2), currencyExchangeService.parseStringToDecimal("1,000"));

@@ -51,6 +51,7 @@ public class CurrencyExchangeService {
 			throw new Exception("Invalid number format");
 		}
 		amount = amount.replace(",", "");
+		amount = amount.replace("+", "");
 		DecimalFormat decimalFormat = new DecimalFormat();
 		decimalFormat.setParseBigDecimal(true);
 
